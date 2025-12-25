@@ -1,0 +1,269 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "SdkReturnHolder",
+    "root": {
+      "__id__": 1
+    },
+    "node": {
+      "__id__": 4
+    },
+    "data": {
+      "__id__": 1
+    },
+    "persistent": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "SdkReturnHolder",
+    "_layer": 131072,
+    "_children": [
+      {
+        "__id__": 2
+      },
+      {
+        "__id__": 3
+      },
+      {
+        "__id__": 4
+      }
+    ],
+    "_components": [
+      {
+        "__type__": "cc.UITransform",
+        "_name": "gameUI<UITransform>",
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "371d6e61-0d99-4fd0-8f90-8625bf210810"
+        },
+        "_contentSize": {
+          "__type__": "cc.Size",
+          "width": 750.0000000000001,
+          "height": 1650
+        }
+      },
+      {
+        "__type__": "cc.Widget",
+        "_name": "gameUI<Widget>",
+        "_alignFlags": 45,
+        "_top": 25.88400000000001,
+        "_bottom": -25.88400000000001,
+        "_originalWidth": 100,
+        "_originalHeight": 100,
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "8cb34429-294c-4686-8d2b-de56d6341bd8"
+        }
+      },
+      {
+        "__type__": "0b6c4yIfINHU5NBKltfivBM",
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "d41dd1cd-6f01-4359-8319-0cf17837e08a"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "bd49c61f-852f-4eba-8eeb-a1e4c819c446",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": -25.884000000000015,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "btnDesk",
+    "_layer": 33554432,
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.UITransform",
+        "node": {
+          "__id__": 2
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "e8f8dac5-7cdb-42cc-a9e5-2193dc679069"
+        },
+        "_contentSize": {
+          "__type__": "cc.Size",
+          "width": 80,
+          "height": 90
+        }
+      },
+      {
+        "__type__": "cc.Sprite",
+        "_sizeMode": 0,
+        "node": {
+          "__id__": 2
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "66647bb1-fc71-418f-9ebc-b4d96d20b4c9"
+        },
+        "_spriteFrame": {
+          "__uuid__": "4d8d26ff-2cb5-4c81-847e-8771f15dd1e4@f9941"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "8e5914fd-65ed-46c5-8a8d-9ba51895f06c",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -295.714,
+      "y": 569.613,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "btnEnter",
+    "_layer": 33554432,
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.UITransform",
+        "node": {
+          "__id__": 3
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "39c067b0-f4bc-4d91-a7b2-5b4e22e79158"
+        },
+        "_contentSize": {
+          "__type__": "cc.Size",
+          "width": 80,
+          "height": 90
+        }
+      },
+      {
+        "__type__": "cc.Sprite",
+        "_sizeMode": 0,
+        "node": {
+          "__id__": 3
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "957a9f47-15da-4b02-8242-3a9ad9cc4c16"
+        },
+        "_spriteFrame": {
+          "__uuid__": "2ead18e8-66be-4c5a-9bb7-1d320320df88@f9941"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "3e02979d-a503-4069-b920-5f19e797234e",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 309.426,
+      "y": 568.732,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "btnSide",
+    "_layer": 33554432,
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.UITransform",
+        "node": {
+          "__id__": 4
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "5a254f60-6895-4fc3-8a4b-7172bdc758e9"
+        },
+        "_contentSize": {
+          "__type__": "cc.Size",
+          "width": 80,
+          "height": 80
+        }
+      },
+      {
+        "__type__": "cc.Sprite",
+        "_sizeMode": 0,
+        "node": {
+          "__id__": 4
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "ddb230ad-e665-44d5-a14a-601c61661e7d"
+        },
+        "_spriteFrame": {
+          "__uuid__": "635c611b-6a57-4242-bbc7-7b11d9ca5110@f9941"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "6c604b4e-0644-4896-8529-a58540fcd667",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -178.582,
+      "y": 570.855,
+      "z": 0
+    }
+  }
+]

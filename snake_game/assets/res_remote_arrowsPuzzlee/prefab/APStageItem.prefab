@@ -1,0 +1,523 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "APStageItem",
+    "root": {
+      "__id__": 2
+    },
+    "node": {
+      "__id__": 6
+    },
+    "stageCamera": {
+      "__id__": 10
+    },
+    "_parent": {
+      "__id__": 1
+    },
+    "targetInfo": {
+      "__id__": 3
+    },
+    "data": {
+      "__id__": 1
+    },
+    "persistent": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "APStageItem",
+    "_layer": 8388608,
+    "_children": [
+      {
+        "__id__": 6
+      },
+      {
+        "__id__": 2
+      },
+      {
+        "__type__": "cc.Node",
+        "_name": "PixelContainer",
+        "_layer": 8388608,
+        "_parent": {
+          "__id__": 1
+        },
+        "_prefab": {
+          "__type__": "cc.PrefabInfo",
+          "fileId": "fe463639-725c-431c-a09d-2f61e7965866",
+          "instance": null,
+          "targetOverrides": null,
+          "nestedPrefabInstanceRoots": null,
+          "root": {
+            "__id__": 1
+          },
+          "asset": {
+            "__id__": 0
+          }
+        }
+      },
+      {
+        "__id__": 8
+      },
+      {
+        "__id__": 7
+      },
+      {
+        "__id__": 5
+      }
+    ],
+    "_components": [
+      {
+        "__type__": "cc.UITransform",
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "f1a5831f-1c09-4bd7-b592-dbb9632c679f"
+        }
+      },
+      {
+        "__type__": "cc.RenderRoot2D",
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "22025563-f186-4ec2-94f4-8a6f0dc9df9b"
+        }
+      },
+      {
+        "__type__": "07682hsN/dJqLsWUoYoyTm+",
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "6ea6f3bb-fd41-43fe-94f1-2dde7f3cefba"
+        },
+        "stageCamera": {
+          "__id__": 10
+        },
+        "levelJson": {
+          "__uuid__": "15dfdc40-8332-43bd-b64b-edb4449f1a41"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "9975d412-a4d3-40e8-9895-f0dc638ce864",
+      "instance": null,
+      "targetOverrides": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "nestedPrefabInstanceRoots": [
+        {
+          "__id__": 2
+        }
+      ]
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 375,
+      "y": 825,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 1
+    },
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "5d8f59c3-ddfc-4e0a-9231-3747318313d7",
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 2
+      },
+      "instance": {
+        "__type__": "cc.PrefabInstance",
+        "fileId": "799110fe-24e2-4fc0-9b87-954cc44c08f6",
+        "prefabRootNode": {
+          "__id__": 1
+        },
+        "mountedComponents": [
+          {
+            "__type__": "cc.MountedComponentsInfo",
+            "targetInfo": {
+              "__type__": "cc.TargetInfo",
+              "localID": [
+                "5d8f59c3-ddfc-4e0a-9231-3747318313d7"
+              ]
+            },
+            "components": [
+              {
+                "__type__": "cc.UIOpacity",
+                "_opacity": 120,
+                "node": {
+                  "__id__": 2
+                },
+                "__prefab": {
+                  "__type__": "cc.CompPrefabInfo",
+                  "fileId": "036ad64e-33f9-43ab-b42f-21bb34910e46"
+                }
+              }
+            ]
+          }
+        ],
+        "propertyOverrides": [
+          {
+            "__type__": "CCPropertyOverrideInfo",
+            "value": "LongLine",
+            "propertyPath": [
+              "_name"
+            ],
+            "targetInfo": {
+              "__id__": 3
+            }
+          },
+          {
+            "__type__": "CCPropertyOverrideInfo",
+            "propertyPath": [
+              "_lpos"
+            ],
+            "targetInfo": {
+              "__id__": 3
+            },
+            "value": {
+              "__type__": "cc.Vec3",
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          {
+            "__type__": "CCPropertyOverrideInfo",
+            "propertyPath": [
+              "_lrot"
+            ],
+            "targetInfo": {
+              "__id__": 3
+            },
+            "value": {
+              "__type__": "cc.Quat",
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            }
+          },
+          {
+            "__type__": "CCPropertyOverrideInfo",
+            "propertyPath": [
+              "_euler"
+            ],
+            "targetInfo": {
+              "__id__": 3
+            },
+            "value": {
+              "__type__": "cc.Vec3",
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          }
+        ]
+      },
+      "asset": {
+        "__uuid__": "abc6cefa-1a53-4574-b772-a846dda184c7"
+      }
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "5d8f59c3-ddfc-4e0a-9231-3747318313d7"
+    ]
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Camera",
+    "_components": [
+      {
+        "__id__": 9
+      },
+      {
+        "__type__": "b4e00xWbjNGg6cX8NhUBrGV",
+        "node": {
+          "__id__": 4
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "c429c12b-6e2e-4196-9ed8-28ed766a13d6"
+        }
+      },
+      {
+        "__type__": "90010Pob99E85cBfilBnSYa",
+        "node": {
+          "__id__": 4
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "9ca349d1-2915-4a6f-b243-4ce83e974ff9"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "04f30cc0-2d7e-474f-be21-022eeafa8ba9",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    },
+    "_parent": {
+      "__id__": 7
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "clickNode",
+    "_active": false,
+    "_layer": 8388608,
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.UITransform",
+        "node": {
+          "__id__": 5
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "005f7c65-c772-421e-a8cc-a09d7243d560"
+        },
+        "_contentSize": {
+          "__type__": "cc.Size",
+          "width": 207,
+          "height": 241
+        },
+        "_anchorPoint": {
+          "__type__": "cc.Vec2",
+          "x": 0,
+          "y": 1
+        }
+      },
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 5
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "0b4dd5ef-243f-4c3a-a516-ad8c99177c27"
+        },
+        "_spriteFrame": {
+          "__uuid__": "d20e0399-27a5-49e0-ba61-09ac4f9f1fee@f9941"
+        }
+      },
+      {
+        "__type__": "cc.Animation",
+        "node": {
+          "__id__": 5
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "83105f3d-ef72-4764-9fa8-1579aae18d16"
+        },
+        "_clips": [
+          {
+            "__uuid__": "08ca0178-9a39-4066-b96a-a1601857cf70"
+          }
+        ],
+        "_defaultClip": {
+          "__uuid__": "08ca0178-9a39-4066-b96a-a1601857cf70"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "cf2920e9-b20b-40ce-8e14-98ec81333f61",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 23.55,
+      "y": 0,
+      "z": 0
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 0.1,
+      "y": 0.1,
+      "z": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "bg",
+    "_layer": 8388608,
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.UITransform",
+        "node": {
+          "__id__": 6
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "d0906930-4b94-4444-9f79-dfef85b969ed"
+        },
+        "_contentSize": {
+          "__type__": "cc.Size",
+          "width": 2000,
+          "height": 2000
+        }
+      },
+      {
+        "__type__": "cc.Sprite",
+        "_sizeMode": 0,
+        "node": {
+          "__id__": 6
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "d91fe150-354f-4211-914b-bd870df86f6f"
+        },
+        "_spriteFrame": {
+          "__uuid__": "05e100e0-a36d-47e4-9131-3eb8a1033400@f9941"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "ba974aff-f6f6-421b-96ee-22a5d596f796",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "StageCamera",
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 4
+      }
+    ],
+    "_components": [
+      {
+        "__id__": 10
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "0c549c8e-cd30-4603-b26d-b9b18aee8b63",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 251.162
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "BlockContainer",
+    "_layer": 8388608,
+    "_parent": {
+      "__id__": 1
+    },
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "2fa549b2-e7d6-4f65-a678-55c5886b2374",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    }
+  },
+  {
+    "__type__": "cc.Camera",
+    "_name": "Camera<CameraComponent>",
+    "_projection": 0,
+    "_orthoHeight": 300,
+    "_clearFlags": 6,
+    "_visibility": 8388608,
+    "node": {
+      "__id__": 4
+    },
+    "__prefab": {
+      "__type__": "cc.CompPrefabInfo",
+      "fileId": "1c4f1703-12d8-4ebb-a804-5275ee6388c7"
+    },
+    "_color": {
+      "__type__": "cc.Color",
+      "a": 255,
+      "b": 120,
+      "g": 76,
+      "r": 51
+    }
+  },
+  {
+    "__type__": "7ba233cI5VCQqOUCksU9YME",
+    "node": {
+      "__id__": 7
+    },
+    "__prefab": {
+      "__type__": "cc.CompPrefabInfo",
+      "fileId": "2668f2d1-ea83-4428-a081-481c29712da2"
+    },
+    "blockContainer": {
+      "__id__": 8
+    },
+    "camera": {
+      "__id__": 9
+    }
+  }
+]

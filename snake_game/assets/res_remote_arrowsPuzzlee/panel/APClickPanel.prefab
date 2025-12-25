@@ -1,0 +1,77 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "APClickPanel",
+    "root": {
+      "__id__": 1
+    },
+    "node": {
+      "__id__": 1
+    },
+    "data": {
+      "__id__": 1
+    },
+    "persistent": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "APClickPanel",
+    "_layer": 33554432,
+    "_components": [
+      {
+        "__type__": "cc.UITransform",
+        "_name": "gameUI<UITransform>",
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "801e9cf7-907c-4120-b967-48dabc3a2871"
+        },
+        "_contentSize": {
+          "__type__": "cc.Size",
+          "width": 750.0000000000001,
+          "height": 1650
+        }
+      },
+      {
+        "__type__": "cc.Widget",
+        "_name": "gameUI<Widget>",
+        "_alignFlags": 45,
+        "_isAbsTop": false,
+        "_originalWidth": 100,
+        "_originalHeight": 100,
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "20229a22-e24e-4a11-9b50-6a575639b33a"
+        }
+      },
+      {
+        "__type__": "323cedOUKVCRq8wo6IO5etc",
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "5002d648-443f-4e50-a83b-0f0c63f136e5"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "9568038f-30f8-41ea-8255-a4ddb0db4a7a",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    }
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "Snake_Body",
+    "root": {
+      "__id__": 1
+    },
+    "node": {
+      "__id__": 1
+    },
+    "data": {
+      "__id__": 1
+    },
+    "persistent": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Snake_Body",
+    "_layer": 8388608,
+    "_components": [
+      {
+        "__type__": "cc.UITransform",
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "5f005c7a-1af7-4624-ba7d-0c6052b153b1"
+        },
+        "_contentSize": {
+          "__type__": "cc.Size",
+          "width": 6,
+          "height": 6
+        }
+      },
+      {
+        "__type__": "cc.Sprite",
+        "_sizeMode": 0,
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "9e4312d9-4056-4548-81dc-91185439c7b5"
+        },
+        "_spriteFrame": {
+          "__uuid__": "9642a459-22d5-4a4d-86e1-71a0970029a8@f9941"
+        }
+      },
+      {
+        "__type__": "d65cdVJ055GMKsLjiIymAO7",
+        "node": {
+          "__id__": 1
+        },
+        "__prefab": {
+          "__type__": "cc.CompPrefabInfo",
+          "fileId": "16c1561d-733e-44ef-8fc7-101404ae4bdd"
+        },
+        "changeEular": {
+          "__type__": "cc.Vec3",
+          "x": 0,
+          "y": 0,
+          "z": 90
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "fcbf6eda-74ec-422f-aef0-80eea36a8a8f",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": -4.062,
+      "z": 0
+    }
+  }
+]

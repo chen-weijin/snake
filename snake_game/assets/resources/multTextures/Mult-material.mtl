@@ -1,0 +1,1 @@
+{"__type__":"cc.Material","_name":"Mult-material","_props":[{}],"_states":[{"rasterizerState":{},"depthStencilState":{},"blendState":{"targets":[{}]}}],"_defines":[{"USE_TEXTURE":true}],"_effectAsset":{"__uuid__":"add9fcaa-8475-4521-917b-7de307b81c4d"},"_techIdx":0}

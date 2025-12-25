@@ -1,0 +1,31 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "Node",
+    "root": {
+      "__id__": 1
+    },
+    "data": {
+      "__id__": 1
+    },
+    "persistent": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Node",
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "fileId": "317ede01-3b85-4b50-a1b2-c05b9f3dcba4",
+      "instance": null,
+      "targetOverrides": null,
+      "nestedPrefabInstanceRoots": null,
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      }
+    },
+    "undefined": {}
+  }
+]

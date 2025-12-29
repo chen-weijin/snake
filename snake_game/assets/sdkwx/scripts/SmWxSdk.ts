@@ -241,21 +241,23 @@ export class SmWxSdk extends BaseSdk {
                             },
                             method: "POST",
                             success: function (t) {
-                                var o;
-                                window.sm.log.debug("############## 请求唯一ID成功", JSON.stringify(t)),
-                                    0 == t.data.code &&
-                                        (console.log("###res.data.data.data.openid:", t.data.data.data.openid),
-                                        console.log("###res", t),
-                                        (n.openid = t.data.data.data.openid),
-                                        (window.SmSdk.savedOpenid = t.data.data.data.openid),
-                                        null == YinLisdk || YinLisdk.initialize(1, n.openid),
-                                        sdkEventManager.emit(SdkInnerEvent.NewUserEnterGame),
-                                        null == (o = window.ccWxSdk) || o.initialize(n.openid),
-                                        console.log("!!!###res", t.code),
-                                        e());
+                                // var o;
+                                // window.sm.log.debug("############## 请求唯一ID成功", JSON.stringify(t)),
+                                //     0 == t.data.code &&
+                                //         (console.log("###res.data.data.data.openid:", t.data.data.data.openid),
+                                //         console.log("###res", t),
+                                //         (n.openid = t.data.data.data.openid),
+                                //         (window.SmSdk.savedOpenid = t.data.data.data.openid),
+                                //         null == YinLisdk || YinLisdk.initialize(1, n.openid),
+                                //         sdkEventManager.emit(SdkInnerEvent.NewUserEnterGame),
+                                //         null == (o = window.ccWxSdk) || o.initialize(n.openid),
+                                //         console.log("!!!###res", t.code),
+                                //         e());
+                                e();
                             },
                             fail: function (t) {
-                                window.sm.log.debug("############## 请求唯一ID失败", t), e();
+                                // window.sm.log.debug("############## 请求唯一ID失败", t), e();
+                                e();
                             },
                         });
             },

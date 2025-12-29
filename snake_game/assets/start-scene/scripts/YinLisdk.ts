@@ -2,6 +2,13 @@ import { _decorator } from "cc";
 import { SysTaskManager } from "./SysTaskManager";
 import { SdkPkgConfig } from "./SdkConfig";
 
+declare global {
+    interface Window {
+        GravityAnalyticsAPI: any;
+    }
+    var GravityAnalyticsAPI: any;
+}
+
 const { ccclass } = _decorator;
 @ccclass("YinLisdk")
 export class YinLisdk {
@@ -25,7 +32,7 @@ export class YinLisdk {
     };
 
     static initialize(t, n) {
-        if (SdkPkgConfig.UseGravityEngine && this.r.accessToken) {
+        if (SdkPkgConfig.UseGravityEngine && this.r.accessToken && typeof GravityAnalyticsAPI !== 'undefined') {
             console.log("#### GeMpSdk #### initialize ");
             this.r.clientId = n;
             this.o = new GravityAnalyticsAPI(this.r);
@@ -46,6 +53,8 @@ export class YinLisdk {
 
             this.o.setupAndStart();
             this.checkStatQueue();
+        } else {
+            console.log("#### GeMpSdk #### GravityAnalyticsAPI not available, skipping initialization");
         }
     }
 

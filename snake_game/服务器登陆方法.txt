@@ -1,0 +1,2 @@
+腾讯云请使用秘钥登陆,秘钥放在C:\amufen.pem 这里,登陆方式如下:
+ssh -i C:\amufen.pem root@43.139.6.101

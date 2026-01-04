@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排行榜管理工具</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>排行榜管理工具</h1>
+            <p class="subtitle">Ranking Management Dashboard</p>
+        </header>
+
+        <div class="config-section">
+            <h2>服务器配置</h2>
+            <div class="config-form">
+                <div class="form-group">
+                    <label for="serverHost">服务器地址:</label>
+                    <input type="text" id="serverHost" value="43.139.6.101" placeholder="例如: 43.139.6.101">
+                </div>
+                <div class="form-group">
+                    <label for="serverPort">服务器端口:</label>
+                    <input type="number" id="serverPort" value="3000" placeholder="例如: 3000">
+                </div>
+                <button class="btn btn-primary" onclick="saveConfig()">保存配置</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="card">
+                    <h3>重置排行榜数据</h3>
+                    <div class="form-group">
+                        <label for="resetAppid">AppID:</label>
+                        <input type="text" id="resetAppid" placeholder="输入 AppID">
+                    </div>
+                    <div class="form-group">
+                        <label for="resetRankid">RankID (可选):</label>
+                        <input type="text" id="resetRankid" placeholder="输入 RankID 或留空">
+                    </div>
+                    <button class="btn btn-danger" onclick="resetRankData()">重置数据</button>
+                </div>
+
+                <div class="card">
+                    <h3>上报玩家分数</h3>
+                    <div class="form-group">
+                        <label for="reportAppid">AppID:</label>
+                        <input type="text" id="reportAppid" placeholder="输入 AppID">
+                    </div>
+                    <div class="form-group">
+                        <label for="reportRankid">RankID:</label>
+                        <input type="text" id="reportRankid" placeholder="输入 RankID">
+                    </div>
+                    <div class="form-group">
+                        <label for="reportRankType">排行榜类型:</label>
+                        <select id="reportRankType">
+                            <option value="rank_total">总榜 (rank_total)</option>
+                            <option value="rank_day">日榜 (rank_day)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reportOpenid">OpenID:</label>
+                        <input type="text" id="reportOpenid" placeholder="输入 OpenID">
+                    </div>
+                    <div class="form-group">
+                        <label for="reportScore">分数:</label>
+                        <input type="number" id="reportScore" placeholder="输入分数">
+                    </div>
+                    <div class="form-group">
+                        <label for="reportPlayername">玩家名称:</label>
+                        <input type="text" id="reportPlayername" placeholder="输入玩家名称">
+                    </div>
+                    <button class="btn btn-success" onclick="reportScore()">上报分数</button>
+                </div>
+
+                <div class="card">
+                    <h3>初始化配置</h3>
+                    <div class="form-group">
+                        <label for="initAppid">AppID:</label>
+                        <input type="text" id="initAppid" placeholder="输入 AppID">
+                    </div>
+                    <button class="btn btn-info" onclick="initConfig()">初始化配置</button>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="card">
+                    <h3>获取排行榜列表</h3>
+                    <div class="form-group">
+                        <label for="queryAppid">AppID:</label>
+                        <input type="text" id="queryAppid" placeholder="输入 AppID">
+                    </div>
+                    <div class="form-group">
+                        <label for="queryRankid">RankID:</label>
+                        <input type="text" id="queryRankid" placeholder="输入 RankID">
+                    </div>
+                    <div class="form-group">
+                        <label for="queryRankType">排行榜类型:</label>
+                        <select id="queryRankType">
+                            <option value="rank_total">总榜 (rank_total)</option>
+                            <option value="rank_day">日榜 (rank_day)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="queryOpenid">OpenID (可选):</label>
+                        <input type="text" id="queryOpenid" placeholder="输入 OpenID 或留空">
+                    </div>
+                    <div class="form-group">
+                        <label for="queryRangeFrom">起始排名:</label>
+                        <input type="number" id="queryRangeFrom" value="0" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="queryRangeTo">结束排名:</label>
+                        <input type="number" id="queryRangeTo" value="9" min="0">
+                    </div>
+                    <button class="btn btn-primary" onclick="getRankList()">获取排行榜</button>
+                </div>
+
+                <div class="card">
+                    <h3>生成随机玩家数据</h3>
+                    <div class="form-group">
+                        <label for="generateAppid">AppID:</label>
+                        <input type="text" id="generateAppid" placeholder="输入 AppID">
+                    </div>
+                    <div class="form-group">
+                        <label for="generateRankid">RankID:</label>
+                        <input type="text" id="generateRankid" placeholder="输入 RankID">
+                    </div>
+                    <div class="form-group">
+                        <label for="generateRankType">排行榜类型:</label>
+                        <select id="generateRankType">
+                            <option value="rank_total">总榜 (rank_total)</option>
+                            <option value="rank_day">日榜 (rank_day)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="generateCount">生成数量:</label>
+                        <input type="number" id="generateCount" value="10" min="1" max="100">
+                    </div>
+                    <button class="btn btn-warning" onclick="generateRandomPlayers()">生成数据</button>
+                </div>
+
+                <div class="card">
+                    <h3>完整测试流程</h3>
+                    <p class="info-text">执行完整的测试流程：初始化配置 → 重置数据 → 生成玩家 → 查看排行榜</p>
+                    <button class="btn btn-primary" onclick="runFullTest()">开始测试</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-section">
+            <h3>操作结果</h3>
+            <div id="result" class="result-box">
+                <p class="placeholder">操作结果将显示在这里...</p>
+            </div>
+        </div>
+
+        <div class="ranklist-section">
+            <h3>排行榜数据</h3>
+            <div id="ranklist" class="ranklist-box">
+                <p class="placeholder">排行榜数据将显示在这里...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

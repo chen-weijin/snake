@@ -1,5 +1,5 @@
 export class SdkPkgConfig {
-    static gameid = "SM3400376871559255";
+    static gameid = "wxf67531bdf3d328af";
     static projectName = "箭了又箭";
     static appid = "wxd06d9fdec79dd7e7";
     static version = "1.0.6";
@@ -77,7 +77,7 @@ export class SdkGameConfig {
     static LogoUrl = "";
     static ruanzhuInfo = "深圳市大源长流科技有限公司 软著号：2025SR1349568";
     static mainLogoUrl = "";
-    static rankRemoteURL = "https://api.sm0.fun/v2/rank/api/report/";
+    static rankRemoteURL = "http://43.139.6.101:3000/v2/rank/api/report/";
     static wxOpenIdUrl = "https://api.sm0.fun/v2/code2openid";
     static wxSubRequestUrl = "https://www.deniulor.com/addJob/";
     static isLoadRemoteLevelTable = false;

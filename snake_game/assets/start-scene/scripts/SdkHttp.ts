@@ -25,7 +25,10 @@ export class sdkhttp {
         (r.responseType = "text"),
             SdkGameConfig.isShowDebugLog && console.log("##服务器请求##开始##", e, t),
             (r.onload = function () {
-                SdkGameConfig.isShowDebugLog && console.log("##服务器请求##成功##", e, t, r.response);
+                SdkGameConfig.isShowDebugLog && console.log("##服务器请求##成功##", e, t, r.response),
+                console.log("HTTP状态码:", r.status),
+                console.log("完整响应内容:", r.response),
+                console.log("响应类型:", typeof r.response);
                 try {
                     var a = JSON.parse(r.response);
                     0 == a.code
@@ -44,6 +47,9 @@ export class sdkhttp {
             r.open("POST", e, true),
             (r.timeout = 5e3),
             r.setRequestHeader("Content-Type", "application/json"),
+            console.log("完整请求URL:", e),
+            console.log("请求头:", { "Content-Type": "application/json" }),
+            console.log("请求体:", t),
             r.send(t);
     }
     static request$(e, t, i, o) {

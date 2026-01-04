@@ -3,6 +3,7 @@ import smtools from "../../start-scene/scripts/SmTools";
 import BasePanel from "../../start-scene/scripts/BasePanel";
 import { ChannelEnum } from "../../start-scene/scripts/PlatConst";
 import { SdkPkgConfig, SdkGameConfig } from "../../start-scene/scripts/SdkConfig";
+import { RankManager } from "../../start-scene/scripts/RankManager";
 import { APEResId, APADCusEvent, APPanelId } from "./APEnum";
 import { APGameConfig } from "./APGameConfig";
 import { APAdPopPanel } from "./APAdPopPanel";
@@ -56,25 +57,19 @@ export class APMenuPanel extends BasePanel {
                 this.node,
                 "btnRank",
                 function () {
-                    SdkPkgConfig.Channel == ChannelEnum.Weixin
-                        ? "" != window.SmSdk.savedPlayerName &&
-                          window.SmSdk.sdkImp.getPlayerInfo(function () {
-                              var e, t;
-                              null == (e = window.SmSdk.rankManager) || e.report("rank_total", window.gm_ap.level.levelIdx),
-                                  null == (t = window.SmSdk.rankManager) || t.report("rank_day", window.gm_ap.level.dayLevel),
-                                  window.sm.ui.open(APRankPanel).then(function (e) {
-                                      e.generateUI();
-                                  });
-                          })
-                        : (SdkPkgConfig.Channel == ChannelEnum.Toutiao || SdkPkgConfig.Channel == ChannelEnum.Kuaishou) &&
-                          window.SmSdk.sdkImp.getPlayerInfo(function () {
-                              var e, t;
-                              null == (e = window.SmSdk.rankManager) || e.report("rank_total", window.gm_ap.level.levelIdx),
-                                  null == (t = window.SmSdk.rankManager) || t.report("rank_day", window.gm_ap.level.dayLevel),
-                                  window.sm.ui.open(APRankPanel).then(function (e) {
-                                      e.generateUI();
-                                  });
-                          });
+                    console.log("点击排行榜按钮");
+                    if (!window.SmSdk.rankManager) {
+                        console.log("rankManager 未初始化，等待初始化...");
+                        var self = this;
+                        setTimeout(function() {
+                            console.log("检查 rankManager:", window.SmSdk && window.SmSdk.rankManager);
+                            self.openRankPanel();
+                        }, 200);
+                        return;
+                    } else {
+                        console.log("rankManager 已存在:", window.SmSdk.rankManager);
+                    }
+                    this.openRankPanel();
                 },
                 this
             )),
@@ -85,13 +80,16 @@ export class APMenuPanel extends BasePanel {
                 window.sm.res.loadRemoteSprite(SdkGameConfig.mainLogoUrl).then(function (t) {
                     e.logo.spriteFrame = t;
                 }),
-            0 == this.btnFree.active && (this.btnRank.worldPosition = this.btnFree.worldPosition),
             window.gm_ap.mat.loadSkin(),
             this.refreshCircle(),
             (SdkPkgConfig.Channel != ChannelEnum.Toutiao && SdkPkgConfig.Channel != ChannelEnum.Kuaishou) ||
                 window.SmSdk.showReturn(this.node);
     }
     refreshCircle() {
+        // 确保排行榜按钮始终可见
+        if (this.btnRank && SdkGameConfig.isOpenRank) {
+            this.btnRank.active = true;
+        }
         SdkPkgConfig.Channel == ChannelEnum.Weixin &&
             (this.node.active
                 ? (window.sm.ui.panel(APGamePanel) && window.sm.ui.panel(APGamePanel).node.active) ||
@@ -116,6 +114,10 @@ export class APMenuPanel extends BasePanel {
                               SdkGameConfig.isShowDebugLog && console.log("创建游戏圈授权"),
                               window.SmSdk.createGameClubButton(this.node, this.btnCircle))))
                 : this.destroyButton());
+        // 再次确保排行榜按钮可见（在创建/销毁用户信息按钮后）
+        if (this.btnRank && SdkGameConfig.isOpenRank) {
+            this.btnRank.active = true;
+        }
     }
     destroyButton() {
         SdkGameConfig.isOpenRank &&
@@ -129,12 +131,40 @@ export class APMenuPanel extends BasePanel {
                 (SdkGameConfig.isShowDebugLog && console.log("销毁游戏圈授权"),
                 (this.isCircleCreate = false),
                 window.SmSdk.destroyGameClubButton());
+        // 确保排行榜按钮在销毁用户信息按钮后仍然可见
+        if (this.btnRank && SdkGameConfig.isOpenRank) {
+            this.btnRank.active = true;
+        }
     }
     onShow() {
-        this.lbl_level && (this.lbl_level.string = "第 " + (window.gm_ap.level.levelIdx + 1).toString() + " 关"),
-            this.refreshCircle(),
-            (APGameConfig.isMenuPanelOpen = true),
-            (this.isPayPower = false);
+        this.lbl_level && (this.lbl_level.string = "第 " + (window.gm_ap.level.levelIdx + 1).toString() + " 关");
+        // 确保排行榜按钮可见
+        if (this.btnRank && SdkGameConfig.isOpenRank) {
+            this.btnRank.active = true;
+        }
+        this.refreshCircle();
+        (APGameConfig.isMenuPanelOpen = true);
+        (this.isPayPower = false);
+    }
+    openRankPanel() {
+        // 尝试获取玩家信息
+        window.SmSdk.sdkImp.getPlayerInfo(function () {
+            console.log("获取玩家信息成功，上报排行榜数据...");
+            // 上报排行榜数据
+            var e, t;
+            null == (e = window.SmSdk.rankManager) || e.report("rank_total", window.gm_ap.level.levelIdx),
+                null == (t = window.SmSdk.rankManager) || t.report("rank_day", window.gm_ap.level.dayLevel);
+        }, function (error) {
+            console.log("获取玩家信息失败，直接打开排行榜面板: ", error);
+        });
+        // 直接打开排行榜面板，不受获取玩家信息结果影响
+        console.log("打开排行榜面板...");
+        window.sm.ui.open(APRankPanel).then(function (e) {
+            console.log("排行榜面板打开成功，生成UI...");
+            e.generateUI();
+        }).catch(function (error) {
+            console.error("打开排行榜面板失败: ", error);
+        });
     }
     onPlay() {
         (APGameConfig.powerSysOn && !this.tryToBegin()) || window.btl_ap.ctrl.loadStage();

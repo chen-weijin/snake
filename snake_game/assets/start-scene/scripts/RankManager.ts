@@ -88,7 +88,8 @@ export class RankManager {
             JSON.stringify({
                 appid: SdkPkgConfig.gameid,
                 rankid: e,
-                openid: window.SmSdk.savedOpenid,
+                openid: "test",
+                // openid: window.SmSdk.savedOpenid,
                 range_from: t,
                 range_to: n,
                 ranklevel: 0,

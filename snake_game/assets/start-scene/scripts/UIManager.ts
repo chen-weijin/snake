@@ -38,11 +38,20 @@ export class UIManager extends Singleton {
         const noticeLayer = find("ui_layer_notice");
 
         this._click_layer = find("ui_layer_clickUI");
-        game.addPersistRootNode(bottomPanel);
-        game.addPersistRootNode(middlePanel);
-        game.addPersistRootNode(topPanel);
-        game.addPersistRootNode(noticeLayer);
-        game.addPersistRootNode(this._click_layer);
+        
+        // 检查节点是否存在且有效，只有有效节点才添加为持久节点
+        const nodesToPersist = [bottomPanel, middlePanel, topPanel, noticeLayer, this._click_layer];
+        nodesToPersist.forEach((node, index) => {
+            if (node && node.isValid) {
+                try {
+                    game.addPersistRootNode(node);
+                } catch (error) {
+                    console.warn(`Failed to add persist root node at index ${index}:`, error);
+                }
+            } else {
+                console.warn(`Node at index ${index} is null or invalid, skipping persist`);
+            }
+        });
 
         this.pnl = new PanelManager(bottomPanel, middlePanel, topPanel);
         this.notice = new NoticeManager(noticeLayer);

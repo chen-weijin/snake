@@ -11,6 +11,7 @@ function saveConfig() {
 }
 
 function loadConfig() {
+    // Load server config
     const savedHost = localStorage.getItem('serverHost');
     const savedPort = localStorage.getItem('serverPort');
     if (savedHost) {
@@ -21,6 +22,60 @@ function loadConfig() {
         serverPort = savedPort;
         document.getElementById('serverPort').value = savedPort;
     }
+    
+    // Load form data
+    const formFields = [
+        'resetAppid', 'resetRankType',
+        'reportAppid', 'reportRankType', 'reportOpenid', 'reportScore', 'reportPlayername',
+        'initAppid',
+        'queryAppid', 'queryRankType', 'queryOpenid', 'queryRangeFrom', 'queryRangeTo',
+        'generateAppid', 'generateRankType', 'generateCount'
+    ];
+    
+    formFields.forEach(fieldId => {
+        const savedValue = localStorage.getItem(fieldId);
+        if (savedValue !== null) {
+            const element = document.getElementById(fieldId);
+            if (element) {
+                element.value = savedValue;
+            }
+        }
+    });
+}
+
+function saveFormData() {
+    const formFields = [
+        'resetAppid', 'resetRankType',
+        'reportAppid', 'reportRankType', 'reportOpenid', 'reportScore', 'reportPlayername',
+        'initAppid',
+        'queryAppid', 'queryRankType', 'queryOpenid', 'queryRangeFrom', 'queryRangeTo',
+        'generateAppid', 'generateRankType', 'generateCount'
+    ];
+    
+    formFields.forEach(fieldId => {
+        const element = document.getElementById(fieldId);
+        if (element) {
+            localStorage.setItem(fieldId, element.value);
+        }
+    });
+}
+
+function addFormEventListeners() {
+    const formFields = [
+        'resetAppid', 'resetRankType',
+        'reportAppid', 'reportRankType', 'reportOpenid', 'reportScore', 'reportPlayername',
+        'initAppid',
+        'queryAppid', 'queryRankType', 'queryOpenid', 'queryRangeFrom', 'queryRangeTo',
+        'generateAppid', 'generateRankType', 'generateCount'
+    ];
+    
+    formFields.forEach(fieldId => {
+        const element = document.getElementById(fieldId);
+        if (element) {
+            element.addEventListener('input', saveFormData);
+            element.addEventListener('change', saveFormData);
+        }
+    });
 }
 
 function showResult(message, type = 'info') {
@@ -68,7 +123,7 @@ async function makeRequest(method, path, data = null) {
 
 async function resetRankData() {
     const appid = document.getElementById('resetAppid').value.trim();
-    const rankid = document.getElementById('resetRankid').value.trim();
+    const rankType = document.getElementById('resetRankType')?.value;
 
     if (!appid) {
         showResult('请输入 AppID', 'error');
@@ -79,11 +134,11 @@ async function resetRankData() {
 
     try {
         const data = { appid };
-        if (rankid) {
-            data.rankid = rankid;
+        if (rankType) {
+            data.rankid = rankType;
         }
 
-        const response = await makeRequest('POST', '/report/reset', data);
+        const response = await makeRequest('POST', '/reset', data);
         
         if (response.code === 0) {
             showResult(`重置成功！删除了 ${response.data.deletedCount} 条记录`, 'success');
@@ -98,13 +153,12 @@ async function resetRankData() {
 
 async function reportScore() {
     const appid = document.getElementById('reportAppid').value.trim();
-    const rankid = document.getElementById('reportRankid').value.trim();
     const rankType = document.getElementById('reportRankType').value;
     const openid = document.getElementById('reportOpenid').value.trim();
     const score = document.getElementById('reportScore').value;
     const playername = document.getElementById('reportPlayername').value.trim();
 
-    if (!appid || !rankid || !openid || !score) {
+    if (!appid || !rankType || !openid || !score) {
         showResult('请填写所有必填字段', 'error');
         return;
     }
@@ -120,7 +174,7 @@ async function reportScore() {
             playername: playername || null,
         };
 
-        const response = await makeRequest('POST', '/report/rankreport', data);
+        const response = await makeRequest('POST', '/rankreport', data);
         
         if (response.code === 0) {
             showResult('分数上报成功！', 'success');
@@ -134,14 +188,13 @@ async function reportScore() {
 
 async function getRankList() {
     const appid = document.getElementById('queryAppid').value.trim();
-    const rankid = document.getElementById('queryRankid').value.trim();
     const rankType = document.getElementById('queryRankType').value;
     const openid = document.getElementById('queryOpenid').value.trim();
     const rangeFrom = parseInt(document.getElementById('queryRangeFrom').value) || 0;
     const rangeTo = parseInt(document.getElementById('queryRangeTo').value) || 9;
 
-    if (!appid || !rankid) {
-        showResult('请输入 AppID 和 RankID', 'error');
+    if (!appid || !rankType) {
+        showResult('请输入 AppID 和选择排行榜类型', 'error');
         return;
     }
 
@@ -156,7 +209,7 @@ async function getRankList() {
             range_to: rangeTo,
         };
 
-        const response = await makeRequest('POST', '/report/rankdata', data);
+        const response = await makeRequest('POST', '/rankdata', data);
         
         if (response.code === 0) {
             showResult('获取排行榜成功！', 'success');
@@ -213,7 +266,7 @@ async function initConfig() {
     showLoading();
 
     try {
-        const response = await makeRequest('POST', '/report/initconfig', { appid });
+        const response = await makeRequest('POST', '/initconfig', { appid });
         
         if (response.code === 0) {
             showResult('配置初始化成功！', 'success');
@@ -227,12 +280,11 @@ async function initConfig() {
 
 async function generateRandomPlayers() {
     const appid = document.getElementById('generateAppid').value.trim();
-    const rankid = document.getElementById('generateRankid').value.trim();
     const rankType = document.getElementById('generateRankType').value;
     const count = parseInt(document.getElementById('generateCount').value) || 10;
 
-    if (!appid || !rankid) {
-        showResult('请输入 AppID 和 RankID', 'error');
+    if (!appid) {
+        showResult('请输入 AppID', 'error');
         return;
     }
 
@@ -248,22 +300,22 @@ async function generateRandomPlayers() {
         const playername = names[Math.floor(Math.random() * names.length)];
 
         try {
-            const response = await makeRequest('POST', '/report/rankreport', {
-                appid,
-                rankid: rankType,
-                openid,
-                score,
-                playername,
-            });
+                const response = await makeRequest('POST', '/rankreport', {
+                    appid,
+                    rankid: rankType,
+                    openid,
+                    score,
+                    playername,
+                });
 
-            if (response.code === 0) {
-                successCount++;
-            } else {
+                if (response.code === 0) {
+                    successCount++;
+                } else {
+                    failCount++;
+                }
+            } catch (error) {
                 failCount++;
             }
-        } catch (error) {
-            failCount++;
-        }
 
         await new Promise(resolve => setTimeout(resolve, 100));
     }
@@ -279,11 +331,11 @@ async function runFullTest() {
 
     try {
         showResult('正在初始化配置...');
-        await makeRequest('POST', '/report/initconfig', { appid });
+        await makeRequest('POST', '/initconfig', { appid });
         await new Promise(resolve => setTimeout(resolve, 500));
 
         showResult('正在重置数据...');
-        await makeRequest('POST', '/report/reset', { appid, rankid });
+        await makeRequest('POST', '/reset', { appid, rankid });
         await new Promise(resolve => setTimeout(resolve, 500));
 
         showResult('正在生成随机玩家数据...');
@@ -292,7 +344,7 @@ async function runFullTest() {
             const openid = `player_${Date.now()}_${i}`;
             const score = Math.floor(Math.random() * 10000) + 100;
             const playername = names[Math.floor(Math.random() * names.length)];
-            await makeRequest('POST', '/report/rankreport', {
+            await makeRequest('POST', '/rankreport', {
                 appid,
                 rankid,
                 openid,
@@ -303,7 +355,7 @@ async function runFullTest() {
         }
 
         showResult('正在获取排行榜...');
-        const response = await makeRequest('POST', '/report/rankdata', {
+        const response = await makeRequest('POST', '/rankdata', {
             appid,
             rankid,
             range_from: 0,
@@ -323,4 +375,5 @@ async function runFullTest() {
 
 window.onload = function() {
     loadConfig();
+    addFormEventListeners();
 };

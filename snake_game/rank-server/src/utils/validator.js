@@ -2,7 +2,8 @@
 
 // 验证排行榜配置请求
 exports.validateRankConfigRequest = (req, res, next) => {
-  const { appid } = req.query;
+  // 同时检查 query 和 body 中的 appid，兼容 GET 和 POST 请求
+  const appid = req.query.appid || req.body.appid;
   
   if (!appid || typeof appid !== 'string') {
     return res.status(400).json({ code: 400, message: 'Invalid appid parameter' });
@@ -29,10 +30,6 @@ exports.validateRankReportRequest = (req, res, next) => {
   
   if (typeof score !== 'number' || isNaN(score)) {
     return res.status(400).json({ code: 400, message: 'Invalid score parameter' });
-  }
-  
-  if (!playername || typeof playername !== 'string') {
-    return res.status(400).json({ code: 400, message: 'Invalid playername parameter' });
   }
   
   next();

@@ -28,6 +28,7 @@ export class APMenuPanel extends BasePanel {
     logo: any;
     btnRank: any;
     btnCircle: any;
+    btnTestScore: any;
 
     get layer() {
         return window.sm.ui.layer_panel;
@@ -84,6 +85,21 @@ export class APMenuPanel extends BasePanel {
             this.refreshCircle(),
             (SdkPkgConfig.Channel != ChannelEnum.Toutiao && SdkPkgConfig.Channel != ChannelEnum.Kuaishou) ||
                 window.SmSdk.showReturn(this.node);
+            
+            // 仅在调试模式下添加测试按钮
+            if (SdkGameConfig.isShowDebugLog) {
+                try {
+                    // 创建测试按钮（用于调试）
+                    console.log("=== 创建测试分数上报按钮 ===");
+                    
+                    // 直接调用上报方法，不需要UI按钮
+                    this.onTestScore();
+                    
+                    console.log("=== 测试分数上报按钮已创建 ===");
+                } catch (error) {
+                    console.warn("Failed to initialize test score button:", error);
+                }
+            }
     }
     refreshCircle() {
         // 确保排行榜按钮始终可见
@@ -187,6 +203,38 @@ export class APMenuPanel extends BasePanel {
                     : ((this.isPayPower = true), window.gm_ap.player.decItem(APEResId.Power, 1), true))
             );
     }
+    
+    // 测试分数上报功能 - 仅在调试模式下使用
+    onTestScore() {
+        if (!SdkGameConfig.isShowDebugLog) return;
+        
+        console.log("=== 开始测试分数上报 ===");
+        
+        // 获取当前等级作为测试分数
+        const testScore = window.gm_ap.level.levelIdx;
+        const dayScore = window.gm_ap.level.dayLevel;
+        
+        console.log("测试分数信息:", {
+            totalScore: testScore,
+            dayScore: dayScore,
+            playerName: window.SmSdk.savedPlayerName,
+            openid: window.SmSdk.savedOpenid
+        });
+        
+        // 直接上报分数，不依赖玩家信息获取
+        if (window.SmSdk.rankManager) {
+            window.SmSdk.rankManager.report("rank_total", testScore, { test: true });
+            window.SmSdk.rankManager.report("rank_day", dayScore, { test: true });
+            console.log("✅ 测试分数上报请求已发送");
+            window.sm.ui.tip("测试分数上报完成");
+        } else {
+            console.error("❌ rankManager未初始化");
+            window.sm.ui.tip("测试分数上报失败: rankManager未初始化");
+        }
+        
+        console.log("=== 分数上报测试完成 ===");
+    }
+    
     close() {
         super.close.call(this), (APGameConfig.isMenuPanelOpen = false);
     }

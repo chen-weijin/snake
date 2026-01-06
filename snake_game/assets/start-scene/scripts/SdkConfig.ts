@@ -77,8 +77,8 @@ export class SdkGameConfig {
     static LogoUrl = "";
     static ruanzhuInfo = "深圳市大源长流科技有限公司 软著号：2025SR1349568";
     static mainLogoUrl = "";
-    static rankRemoteURL = "http://43.139.6.101:3000/v2/rank/api/report/";
-    static wxOpenIdUrl = "https://api.sm0.fun/v2/code2openid";
+    static rankRemoteURL = "http://106.53.198.49:3000/v2/rank/api/";
+    static wxOpenIdUrl = "http://106.53.198.49:3000/v2/rank/api/code2openid";
     static wxSubRequestUrl = "https://www.deniulor.com/addJob/";
     static isLoadRemoteLevelTable = false;
     static remoteLevelChose = 1;

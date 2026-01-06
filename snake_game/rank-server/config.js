@@ -7,7 +7,7 @@ module.exports = {
   
   // 数据库配置
   database: {
-    uri: process.env.MONGODB_URI || 'mongodb://localhost:27017/rank-server',
+    uri: process.env.MONGODB_URI || 'mongodb://43.139.6.101:27017/rank-server',
     options: {
       useNewUrlParser: true,
       useUnifiedTopology: true,

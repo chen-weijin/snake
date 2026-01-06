@@ -231,7 +231,7 @@ export class SmWxSdk extends BaseSdk {
                 window.sm.log.debug("############## 微信code:", JSON.stringify(t)),
                     t.code &&
                         n.sdk.request({
-                            url: "https://api.sm0.fun/v2/code2openid",
+                            url: SdkGameConfig.wxOpenIdUrl,
                             data: {
                                 code: t.code,
                                 appid: n.appid,
@@ -241,18 +241,25 @@ export class SmWxSdk extends BaseSdk {
                             },
                             method: "POST",
                             success: function (t) {
-                                // var o;
-                                // window.sm.log.debug("############## 请求唯一ID成功", JSON.stringify(t)),
-                                //     0 == t.data.code &&
-                                //         (console.log("###res.data.data.data.openid:", t.data.data.data.openid),
-                                //         console.log("###res", t),
-                                //         (n.openid = t.data.data.data.openid),
-                                //         (window.SmSdk.savedOpenid = t.data.data.data.openid),
-                                //         null == YinLisdk || YinLisdk.initialize(1, n.openid),
-                                //         sdkEventManager.emit(SdkInnerEvent.NewUserEnterGame),
-                                //         null == (o = window.ccWxSdk) || o.initialize(n.openid),
-                                //         console.log("!!!###res", t.code),
-                                //         e());
+                                var o;
+                                window.sm.log.debug("############## 请求唯一ID成功", JSON.stringify(t));
+                                
+                                if (0 == t.data.code) {
+                                    console.log("###res", t);
+                                    // 安全获取openid，防止嵌套对象undefined错误
+                                    var openid = null;
+                                    if (t.data && t.data.data && t.data.data.data && t.data.data.data.openid) {
+                                        openid = t.data.data.data.openid;
+                                        console.log("###res.data.data.data.openid:", openid);
+                                        n.openid = openid;
+                                        window.SmSdk.savedOpenid = openid;
+                                        null == YinLisdk || YinLisdk.initialize(1, openid);
+                                        sdkEventManager.emit(SdkInnerEvent.NewUserEnterGame);
+                                        null == (o = window.ccWxSdk) || o.initialize(openid);
+                                    }
+                                    console.log("!!!###res", t.code);
+                                    e();
+                                }
                                 e();
                             },
                             fail: function (t) {

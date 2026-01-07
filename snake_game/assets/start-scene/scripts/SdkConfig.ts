@@ -1,6 +1,6 @@
 export class SdkPkgConfig {
     static gameid = "wxf67531bdf3d328af";
-    static projectName = "箭了又箭";
+    static projectName = "箭矢谜途";
     static appid = "wxd06d9fdec79dd7e7";
     static version = "1.0.6";
     static RuanzhuBody = "长沙市云酷网络科技有限公司";

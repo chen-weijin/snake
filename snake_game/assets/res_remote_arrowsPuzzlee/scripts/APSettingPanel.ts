@@ -134,7 +134,7 @@ export class APSettingPanel extends BasePanel {
                 n
                     ? window.sm.ui.open(APAdPopPanel).then(function () {})
                     : sdkhttp.requestv4(
-                          "https://api.sm0.fun/v2/ucheck/" + SdkPkgConfig.gameid + "/" + window.SmSdk.savedOpenid,
+                          "http://106.53.198.49:3000/v2/ucheck/" + SdkPkgConfig.gameid + "/" + window.SmSdk.savedOpenid,
                           function (t) {
                               console.log("### 获取远程回调服务成功 ### "),
                                   (e.copyOpenId.active = true),

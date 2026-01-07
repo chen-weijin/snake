@@ -2,8 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const rankRoutes = require('./routes/rank');
-const config = require('../config');
+const rankRoutes = require('./rank/src/routes/rank');
+const userRoutes = require('./user/src/routes/user');
+const cfgRoutes = require('./cfg/src/routes/cfg');
+const ucheckRoutes = require('./ucheck/src/routes/ucheck').router;
+const config = require('./rank/config');
 
 // 创建Express应用
 const app = express();
@@ -14,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // 配置静态文件服务
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/rank/public'));
 
 // 配置数据库连接
 mongoose.connect(config.database.uri, config.database.options)
@@ -28,6 +31,9 @@ mongoose.connect(config.database.uri, config.database.options)
 
 // 注册路由
 app.use(config.api.prefix, rankRoutes);
+app.use('/v2/userdata', userRoutes);
+app.use('/v2/cfg', cfgRoutes);
+app.use('/v2/ucheck', ucheckRoutes);
 
 // 健康检查路由
 app.get('/health', (req, res) => {
@@ -54,4 +60,10 @@ app.listen(config.server.port, () => {
   console.log(`- POST ${config.api.prefix}/rankreport`);
   console.log(`- POST ${config.api.prefix}/rankdata`);
   console.log(`- POST ${config.api.prefix}/initconfig`);
+  console.log(`- POST /v2/userdata/code2openid`);
+  console.log(`- GET  /v2/userdata/getUserData`);
+  console.log(`- POST /v2/userdata/setUserData`);
+  console.log(`- GET  /v2/cfg/:gameid/:version/sdk`);
+  console.log(`- GET  /v2/cfg/:gameid/:version/sdk_shield`);
+  console.log(`- GET  /v2/ucheck/:gameid/:openid`);
 });

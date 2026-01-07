@@ -89,8 +89,8 @@ export class SdkGameConfig {
     static basename = "用户";
     static isOpenRemoteData = false;
     static remoteDataSaveInterval = 300;
-    static LoadRemoteDataUrl = "https://dc.sm0.fun/v2/userdata/getUserData";
-    static SyncRemoteDataUrl = "https://dc.sm0.fun/v2/userdata/setUserData";
+    static LoadRemoteDataUrl = "http://106.53.198.49:3000/v2/userdata/getUserData";
+    static SyncRemoteDataUrl = "http://106.53.198.49:3000/v2/userdata/setUserData";
     static isOpenRank = true;
     static isOpenCircle = true;
     static offlineContentID = ["CONTENT593359106"];
@@ -127,7 +127,7 @@ export class SdkConfig {
     static version;
 
     static get ConfigUrlBase() {
-        return "https://api.sm0.fun/v2/cfg/" + this.gameid + "/" + this.version + "/";
+        return "http://106.53.198.49:3000/v2/cfg/" + this.gameid + "/" + this.version + "/";
     }
 
     static get ConfigUrlSdk() {

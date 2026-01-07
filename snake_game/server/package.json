@@ -1,13 +1,13 @@
 {
-  "name": "rank-server",
+  "name": "server",
   "version": "1.0.0",
-  "description": "Game Rank Server",
-  "main": "src/app.js",
+  "description": "Game Server with Rank and User Functions",
+  "main": "app.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "node src/app.js"
+    "start": "node app.js",
+    "dev": "node app.js"
   },
-  "keywords": ["game", "rank", "server"],
+  "keywords": ["game", "server", "rank", "user"],
   "author": "",
   "license": "ISC",
   "dependencies": {
